@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>John Rex B. Duran · Academic E-Portfolio</title>
+  <meta name="description" content="Academic e-portfolio of John Rex B. Duran, pre-service teacher of Grade 7 TLE (ICT) at President Diosdado Macapagal High School.">
+  <meta name="theme-color" content="#faf8f3">
+  <meta name="author" content="John Rex B. Duran">
+  <link rel="canonical" href="https://jayoverflow.github.io/FS1-EPortfolio/">
+  <meta property="og:title" content="John Rex B. Duran · Academic E-Portfolio">
+  <meta property="og:description" content="Twenty-one documents from practice teaching, mapped to the thirteen practicum indicators.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jayoverflow.github.io/FS1-EPortfolio/">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cousine:wght@400;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <a class="topbar-name" href="#top">John Rex B. Duran</a>
+    <span class="topbar-current" id="currentSection">I. Table of Contents</span>
+    <nav class="topbar-nav" aria-label="Primary">
+      <a href="#section-i">Index</a>
+      <a href="#section-iii">CV</a>
+      <a href="#colophon">Contact</a>
+      <button class="nav-print" type="button" id="printBtn">Print</button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <p class="hero-kicker"><span class="mark" aria-hidden="true"></span>Academic e-portfolio, S.Y. 2026–2027</p>
+          <h1 class="hero-name"><span>John Rex</span><span>B. Duran</span></h1>
+          <p class="hero-role">Pre-service teacher, BTVTED Computer Programming</p>
+          <p class="hero-statement">Twenty-one documents from my practice teaching at President Diosdado Macapagal High School, mapped to the thirteen practicum indicators.</p>
+        </div>
+        <figure class="hero-figure">
+          <img src="assets/portrait.svg" alt="Portrait placeholder for John Rex B. Duran" width="800" height="1000">
+          <figcaption>Portrait pending. PDMHS, 2026.</figcaption>
+        </figure>
+      </div>
+
+      <nav class="ts" aria-label="Practicum indicators">
+        <div class="ts-head">
+          <span>Thirteen indicators</span>
+          <span><span data-doc-total>21</span> documents mapped</span>
+        </div>
+        <div class="ts-track" id="tsTrack"></div>
+      </nav>
+    </section>
+
+    <noscript>
+      <p class="noscript">This portfolio uses JavaScript to open documents and build the index. Turn it on to use the full page.</p>
+    </noscript>
+
+    <div id="sections"></div>
+
+    <section class="colophon" id="colophon" aria-labelledby="colophon-title">
+      <div class="colophon-inner">
+        <h2 class="visually-hidden" id="colophon-title">Submission</h2>
+        <div class="col-block">
+          <p class="col-label">Submitted by</p>
+          <p>John Rex B. Duran<br>BTVTED, Major in Computer Programming<br>Technological University of the Philippines, Taguig<br><a href="mailto:johnrex.duran@tup.edu.ph">johnrex.duran@tup.edu.ph</a></p>
+          <p class="col-date">Date: ____________________</p>
+        </div>
+        <div class="col-block">
+          <p class="col-label">Submitted to</p>
+          <div class="col-school">
+            <img class="col-seal" src="assets/school-logo.svg" alt="School seal placeholder" width="56" height="56">
+            <p>Ferdinand S. Baltazar<br>Cooperating Teacher<br>President Diosdado Macapagal High School</p>
+          </div>
+        </div>
+        <div class="col-block">
+          <p class="col-label">Notes</p>
+          <p>Practice teaching, first trimester, S.Y. 2026–2027. Copy and documents are placeholders until final submission. The cooperating teacher's evaluation is submitted separately in a sealed envelope.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p class="footer-mark" aria-hidden="true">John Rex B. Duran</p>
+      <div class="footer-row">
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="mailto:johnrex.duran@tup.edu.ph">Email</a>
+          <a href="https://github.com/JayOverFlow" rel="noopener">GitHub</a>
+          <a href="#section-i">Index</a>
+          <a href="#top">Top</a>
+        </nav>
+        <p class="footer-fine">HTML, CSS, and vanilla JavaScript. Hosted on GitHub Pages.</p>
+      </div>
+    </div>
+  </footer>
+
+  <dialog class="viewer" id="viewer" aria-labelledby="viewerTitle">
+    <div class="viewer-head">
+      <button class="viewer-close" id="viewerClose" type="button" aria-label="Close document">×</button>
+      <p class="viewer-kicker" id="viewerKicker"></p>
+      <h2 class="viewer-title" id="viewerTitle"></h2>
+      <button class="viewer-copy" id="viewerCopy" type="button">Copy link</button>
+    </div>
+    <div class="viewer-body" id="viewerBody"></div>
+  </dialog>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

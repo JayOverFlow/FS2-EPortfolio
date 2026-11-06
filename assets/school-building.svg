@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="Line drawing placeholder of a school building">
+  <rect width="1200" height="800" fill="#e9eef8"/>
+  <defs>
+    <pattern id="windows" width="80" height="80" patternUnits="userSpaceOnUse">
+      <rect x="18" y="18" width="44" height="44" fill="#faf8f3" stroke="#15171a" stroke-width="2"/>
+      <path d="M40 18V62M18 40H62" stroke="#15171a" stroke-width="1" opacity=".45"/>
+    </pattern>
+  </defs>
+  <g fill="none" stroke="#15171a" stroke-width="2">
+    <path d="M0 620H1200"/>
+    <rect x="240" y="260" width="720" height="360"/>
+    <path d="M200 260 600 150 1000 260"/>
+    <rect x="270" y="290" width="660" height="230" fill="url(#windows)"/>
+    <rect x="540" y="440" width="120" height="180" fill="#faf8f3"/>
+    <path d="M600 440V620"/>
+    <path d="M1060 620V360"/>
+    <path d="M1060 360h-70l20 22-20 22h70z" fill="#1f3a93" stroke="#1f3a93"/>
+    <circle cx="150" cy="560" r="60" fill="#e9eef8"/>
+    <path d="M150 620V500"/>
+    <circle cx="1040" cy="540" r="46" fill="#e9eef8"/>
+    <path d="M1040 620V494"/>
+    <path d="M60 700h1080" stroke-opacity=".4"/>
+  </g>
+  <text x="60" y="740" font-family="Cousine, monospace" font-size="13" letter-spacing="4" fill="#6b6a64">CAMPUS PHOTOGRAPH PENDING</text>
+  <text x="60" y="120" font-family="Cousine, monospace" font-size="13" letter-spacing="4" fill="#1f3a93">PRESIDENT DIOSDADO MACAPAGAL HIGH SCHOOL</text>
+</svg>
