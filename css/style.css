@@ -445,6 +445,33 @@ img {
   margin-bottom: 0;
 }
 
+/* ------------------------------------------------------------ learning blocks (vision, mission, history) */
+
+.learning-block {
+  max-width: 64ch;
+  margin: 0 0 28px;
+}
+
+.learning-label {
+  margin: 0 0 8px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+.learning-text {
+  margin: 0 0 1em;
+  color: var(--ink-soft);
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+.learning-text:last-child {
+  margin-bottom: 0;
+}
+
 .intro-drop > p:first-child::first-letter {
   float: left;
   padding-right: 0.1em;

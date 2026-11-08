@@ -243,6 +243,26 @@
       ));
     }
 
+    if (section.vision) {
+      body.push(h("div", { class: "learning-block" },
+        h("h3", { class: "learning-label" }, "Vision"),
+        h("p", { class: "learning-text" }, section.vision)
+      ));
+    }
+    if (section.mission) {
+      body.push(h("div", { class: "learning-block" },
+        h("h3", { class: "learning-label" }, "Mission"),
+        h("p", { class: "learning-text" }, section.mission)
+      ));
+    }
+    if (section.history) {
+      const hist = h("div", { class: "learning-block" },
+        h("h3", { class: "learning-label" }, "Short History")
+      );
+      section.history.forEach(function (p) { hist.append(h("p", { class: "learning-text" }, p)); });
+      body.push(hist);
+    }
+
     if (section.type === "toc") body.push(renderToc(section));
     if (section.cv) body.push(renderCv(section.cv));
     if (section.quote) body.push(h("blockquote", { class: "statement" }, section.quote));

@@ -34,7 +34,7 @@ window.PORTFOLIO = {
     {
       roman: "I",
       title: "Table of Contents",
-      note: "Ten sections. Twenty-one documents.",
+      note: "Ten sections. Nineteen documents.",
       type: "toc"
     },
     {
@@ -100,29 +100,29 @@ window.PORTFOLIO = {
       intro: [
         "President Diosdado Macapagal High School is a public secondary school in Taguig City, under the Schools Division of Taguig City and Pateros. I completed my field study there in the first trimester of S.Y. 2026–2027."
       ],
+      vision: "We dream of Filipinos who passionately love their country and whose values and competencies enable them to realize their full potential and contribute meaningfully to building the nation.",
+      mission: "To protect and promote the right of every Filipino to quality, equitable, culture-based, and complete basic education where: Students learn in a child-friendly, gender-sensitive, safe, and motivating environment. Administrators and staff, as stewards of the institution, ensure an enabling and supportive environment for effective learning to happen. Family, community, and other stakeholders are actively engaged and share responsibility for developing life-long learners.",
+      history: [
+        "President Diosdado Macapagal High School (PDMHS) was conceived in 1999, when residents of Barangay Katuparan requested a school for their community. The request was granted, and the Bases Conversion and Development Authority donated the land; groundbreaking took place on August 15, 2005.",
+        "The first buildings were donated by Senator Alan Peter S. Cayetano, who filed the bill establishing the school, and by the local government under Mayor Freddie Tinga. The school opened for operation on August 15, 2007 and was inaugurated on September 1, 2007 as an annex of Signal Village National High School.",
+        "The first commencement exercises were held in April 2011. Since then the school has grown to roughly 3,200 students, with expanded facilities that include a senior high school building added in 2016. Today PDMHS operates as an autonomous annex of Signal Village National High School under the Schools Division of Taguig City and Pateros."
+      ],
       figure: {
         src: "assets/pdmhs-bldg.png",
-        alt: "Placeholder illustration of the President Diosdado Macapagal High School campus",
+        alt: "Photograph of the President Diosdado Macapagal High School campus",
         caption: "President Diosdado Macapagal High School."
       },
       docs: [
         {
-          slug: "school-vision-mission",
-          title: "Vision and Mission",
-          desc: "The school's vision and mission statements, as posted and used in orientation.",
-          type: "Document"
-        },
-        {
-          slug: "school-history",
-          title: "Short History",
-          desc: "A brief account of the school's founding and growth.",
-          type: "Document"
-        },
-        {
           slug: "school-grounds",
           title: "School Grounds and Building",
           desc: "Photographs of the campus, the classrooms, and the TLE workspaces I used.",
-          type: "Image set"
+          type: "Image set",
+          files: [
+            "documents/school-grounds/campus-01.jpg",
+            "documents/school-grounds/campus-02.jpg",
+            "documents/school-grounds/campus-03.jpg"
+          ]
         }
       ]
     },
