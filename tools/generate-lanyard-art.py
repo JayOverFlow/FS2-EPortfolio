@@ -12,9 +12,13 @@ ROOT = Path(__file__).resolve().parent.parent
 ASSETS = ROOT / "assets"
 random.seed(7)
 
-INK = (21, 23, 26); BLUE = (31, 58, 147); BLUE_DARK = (21, 42, 107)
-NAVY = (19, 38, 92); GOLD = (240, 180, 41); GOLD_DARK = (168, 100, 28)
+INK = (21, 23, 26); BLUE = (107, 31, 47); BLUE_DARK = (74, 20, 32)
+NAVY = (74, 20, 32); GOLD = (217, 220, 226); GOLD_DARK = (140, 145, 150)
 PAPER = (250, 248, 243); MIST = (233, 238, 248); MUTED = (107, 106, 100)
+
+def font_serif(size):
+    try: return ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf", size)
+    except Exception: return font(size, True)
 
 def font(size, bold=False):
     candidates = [
@@ -55,9 +59,9 @@ def seal(d, cx, cy, r):
 def jrd_photo(w, h, photo_path=None):
     img = Image.new("RGB", (w, h), MIST)
     d = ImageDraw.Draw(img)
-    for x in range(0, w, 40): d.line([(x, 0), (x, h)], fill=(31, 58, 147, 30), width=1)
-    for y in range(0, h, 40): d.line([(0, y), (w, y)], fill=(31, 58, 147, 30), width=1)
-    d.ellipse([w*0.62-140, h*0.34-140, w*0.62+140, h*0.34+140], fill=(31,58,147,22), outline=(31,58,147,90), width=3)
+    for x in range(0, w, 40): d.line([(x, 0), (x, h)], fill=(107, 31, 47, 30), width=1)
+    for y in range(0, h, 40): d.line([(0, y), (w, y)], fill=(107, 31, 47, 30), width=1)
+    d.ellipse([w*0.62-140, h*0.34-140, w*0.62+140, h*0.34+140], fill=(107,31,47,22), outline=(107,31,47,90), width=3)
     d.line([60, int(h*0.66), w-60, int(h*0.66)], fill=INK, width=4)
     text_center(d, w//2, int(h*0.70), "JRD", font(110, True), INK)
     text_center(d, w//2, int(h*0.88), "PORTRAIT PENDING", font(24, True), MUTED)
@@ -67,7 +71,7 @@ def jrd_photo(w, h, photo_path=None):
     return img
 
 def card_front(photo=None):
-    W, H = 1024, 1440
+    W, H = 1024, 1705
     img = apply_weave(Image.new("RGB", (W, H), PAPER)); d = ImageDraw.Draw(img, "RGBA")
     # header — keep the centre-top clear: the card slot + ring sit there.
     d.rectangle([0, 0, W, 250], fill=BLUE_DARK)
@@ -76,7 +80,7 @@ def card_front(photo=None):
     # short tagline offset to the right of the slot/ring zone
     d.text((700, 78), "TUP-TAGUIG", font=font(44, True), fill=PAPER)
     d.text((700, 134), "BTVTED", font=font(36, True), fill=GOLD)
-    d.text((700, 182), "EST. 1978", font=font(24, True), fill=(180, 195, 235))
+    d.text((700, 182), "EST. 1978", font=font(24, True), fill=(225, 190, 198))
     # photo
     ph = jrd_photo(560, 640, photo)
     img.paste(ph, (232, 320)); d = ImageDraw.Draw(img, "RGBA")
@@ -91,18 +95,18 @@ def card_front(photo=None):
     text_center(d, W//2, 1212, "Field Study · President Diosdado Macapagal HS", font(26, False), MUTED)
     text_center(d, W//2, 1250, "Grade 7 TLE (ICT)  ·  S.Y. 2026-2027", font(26, False), MUTED)
     # footer strip
-    d.rectangle([0, 1330, W, H], fill=INK)
-    text_center(d, W//2, 1352, "ID NO. 2026-001  ·  TUP-TAGUIG", font(28, True), PAPER)
+    d.rectangle([0, H-115, W, H], fill=INK)
+    text_center(d, W//2, H-93, "ID NO. 2026-001  ·  TUP-TAGUIG", font(28, True), PAPER)
     return img
 
 def card_back():
-    W, H = 1024, 1440
+    W, H = 1024, 1705
     img = apply_weave(Image.new("RGB", (W, H), BLUE_DARK)); d = ImageDraw.Draw(img, "RGBA")
     d.rectangle([0, 0, W, 8], fill=GOLD); d.rectangle([0, H-8, W, H], fill=GOLD)
-    seal(d, W//2, 230, 88)
-    text_center(d, W//2, 350, "TECHNOLOGICAL UNIVERSITY OF THE PHILIPPINES", font(30, True), PAPER)
-    text_center(d, W//2, 395, "TUP-TAGUIG  ·  EST. 1978", font(26, True), GOLD)
-    d.line([212, 460, 812, 460], fill=GOLD, width=3)
+    seal(d, W//2, 272, 88)
+    text_center(d, W//2, 414, "TECHNOLOGICAL UNIVERSITY OF THE PHILIPPINES", font(30, True), PAPER)
+    text_center(d, W//2, 468, "TUP-TAGUIG  ·  EST. 1978", font(26, True), GOLD)
+    d.line([212, 545, 812, 545], fill=GOLD, width=3)
     rows = [
         ("NAME", "John Rex B. Duran"),
         ("PROGRAM", "BTVTED, Computer Programming"),
@@ -110,10 +114,10 @@ def card_back():
         ("EMAIL", "johnrex.duran@tup.edu.ph"),
         ("GITHUB", "github.com/JayOverFlow"),
     ]
-    y = 500
+    y = 592
     for k, v in rows:
         text_center(d, W//2, y, k, font(24, True), GOLD); y += 34
-        text_center(d, W//2, y, v, font(32, True), PAPER); y += 66
+        text_center(d, W//2, y, v, font(32, True), PAPER); y += 78
     quote = "I want learners to leave my class able to build something that works and explain why it works."
     # wrapped quote
     words, line, lines = quote.split(), "", []
@@ -123,34 +127,33 @@ def card_back():
         else: line = t
     lines.append(line); y += 10
     for ln in lines:
-        text_center(d, W//2, y, '"' + ln + '"' if ln == lines[0] else ln, font(28, False), (220, 228, 250)); y += 40
+        text_center(d, W//2, y, '"' + ln + '"' if ln == lines[0] else ln, font(28, False), (240, 214, 219)); y += 40
     # barcode
     x = W//2 - 220
     while x < W//2 + 220:
-        bw = random.choice([3, 5, 8, 12]); d.rectangle([x, 1210, x+bw, 1300], fill=PAPER); x += bw + random.choice([3, 5, 8])
-    text_center(d, W//2, 1312, "2026 · FS1 E-PORTFOLIO", font(24, True), PAPER)
+        bw = random.choice([3, 5, 8, 12]); d.rectangle([x, 1433, x+bw, 1523], fill=PAPER); x += bw + random.choice([3, 5, 8])
+    text_center(d, W//2, 1535, "2026 · FS1 E-PORTFOLIO", font(24, True), PAPER)
     return img
 
 def strap():
     """Wide embroidered TUP lanyard tape: navy fabric, gold edges, stitched lettering."""
     W, H = 2048, 256
     img = apply_weave(Image.new("RGB", (W, H), NAVY)); d = ImageDraw.Draw(img, "RGBA")
-    # gold edge stitching (dashed)
-    for y in (22, H-22):
-        x = 0
-        while x < W:
-            d.line([(x, y), (x+22, y)], fill=GOLD, width=6); x += 34
-        d.line([(0, y-8), (W, y-8)], fill=(240,180,41,70), width=2)
+    # twin off-white pinstripes along both edges (see reference design)
+    for y in (16, 28, H-28, H-16):
+        d.line([(0, y), (W, y)], fill=(232, 222, 214, 200), width=3 if y in (16, H-16) else 2)
+    d.line([(0, 40), (W, 40)], fill=(232, 222, 214, 70), width=1)
+    d.line([(0, H-40), (W, H-40)], fill=(232, 222, 214, 70), width=1)
     # embroidered text, repeated; slight offset shadow = thread depth
     phrase = "TECHNOLOGICAL UNIVERSITY OF THE PHILIPPINES"
-    f = font(64, True)
+    f = font_serif(58)
     # measure and tile
-    unit = phrase + "   ★   TUP   ★   "
+    unit = phrase + "   •   TUP   •   "
     uw = d.textlength(unit, font=f)
     x = 16
     while x < W:
-        for dx, dy, col in [(2, 3, (8, 18, 52)), (0, 0, (255, 255, 255))]:
-            d.text((x+dx, 88+dy), unit, font=f, fill=col)
+        for dx, dy, col in [(2, 3, (30, 6, 12)), (0, 0, (245, 240, 235))]:
+            d.text((x+dx, 92+dy), unit, font=f, fill=col)
         x += uw
     # thread speckle over letters
     for _ in range(2600):

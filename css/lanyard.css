@@ -6,13 +6,18 @@
   position: relative;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  /* Visible so the card can swing/overflow the stage while dragging. */
+  overflow: visible;
 }
 
 .lanyard-canvas {
   display: block;
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  /* Size is set by js/lanyard.js (overscan > 100%) so the WebGL
+     viewport extends past the container and the card can overflow it. */
 }
 
 /* ------------------------------------------------------------ hero integration */
@@ -25,6 +30,9 @@
   background: transparent;
   align-self: center;
   width: 100%;
+  position: relative;
+  z-index: 3;
+  overflow: visible;
 }
 
 .lanyard-mount {

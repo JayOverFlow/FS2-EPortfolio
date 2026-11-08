@@ -32,6 +32,8 @@ html {
 
 body {
   margin: 0;
+  /* The hero Lanyard card can overflow its stage; never scroll sideways for it. */
+  overflow-x: clip;
   background: var(--paper);
   color: var(--ink);
   font-family: var(--serif);
@@ -186,7 +188,9 @@ img {
 /* ------------------------------------------------------------ hero */
 
 .hero {
-  padding: clamp(44px, 7vw, 96px) var(--gutter) clamp(36px, 5vw, 64px);
+  position: relative;
+  z-index: 3;
+  padding: clamp(10px, 1.5vw, 20px) var(--gutter) clamp(36px, 5vw, 64px);
   border-bottom: 1px solid var(--rule);
   scroll-margin-top: 64px;
 }

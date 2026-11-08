@@ -8,10 +8,11 @@ const mount = document.getElementById('lanyardMount');
 if (figure && mount) {
   try {
     const lanyard = createLanyard(mount, {
-      frontImage: 'assets/card-front.png',
+      frontImage: 'assets/card-front-real.jpg',
       backImage: 'assets/card-back.png',
-      imageFit: 'cover',
-      cardColor: '#ffffff',
+      /* 'contain' keeps every element of the real ID visible (no cropping). */
+      imageFit: 'contain',
+      cardColor: '#eef3fb',
       orientation: 'portrait',
       /* Laminated ID card: glossy front, not holographic foil. */
       finish: 'glossy',
@@ -19,11 +20,11 @@ if (figure && mount) {
       size: 0.66,
       anchor: 'center',
       strapLength: 0.42,
-      /* Realistic embroidered TUP tape (see tools/generate-lanyard-art.py). */
+      /* Maroon embroidered TUP tape (see tools/generate-lanyard-art.py). */
       strapImage: 'assets/strap.png',
-      strapColor: '#13265c',
+      strapColor: '#4a1420',
       strapWidth: 0.9,
-      metal: 'gold',
+      metal: 'silver',
       gravity: 1,
       damping: 0.55,
       elasticity: 0.45,

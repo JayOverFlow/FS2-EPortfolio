@@ -8,8 +8,9 @@
 import * as THREE from 'three';
 
 const CARD_SIZES = {
-  portrait: [1.6, 2.25],
-  landscape: [2.25, 1.6]
+  /* Portrait matches assets/card-front-real.jpg (front-id-new.jpeg, 1600x2664). */
+  portrait: [1.6, 2.664],
+  landscape: [2.664, 1.6]
 };
 const ANCHORS = { left: 0.27, center: 0.5, right: 0.73 };
 const THICKNESS = 0.018;
@@ -26,6 +27,10 @@ const RING_TUBE = 0.0135;
 const EYELET_RADIUS = 0.036;
 const CLAMP_BODY = 0.15;
 const FACE_WIDTH = 1024;
+/* Canvas overscan: the WebGL viewport is this factor larger than the
+   container (anchored to its top edge) so the card can overflow the
+   stage while being dragged/thrown instead of clipping at its edge. */
+const OVERSCAN = 1.55;
 
 const FINISHES = {
   glossy: { roughness: 0.42, metalness: 0, clearcoat: 1, clearcoatRoughness: 0.06, foil: 0, anisotropy: 0 },
@@ -890,12 +895,16 @@ export function createLanyard(container, options = {}) {
   const frameView = () => {
     const s = settings;
     const aspect = view.width / view.height;
+    /* viewHeight is the container's world height; the overscanned canvas
+       shows viewHeight * OVERSCAN, anchored to the container's top edge,
+       so the resting card keeps its size inside the stage. */
     let viewHeight = layout.height / clamp(s.size, 0.15, 0.9);
     const minimumWidth = layout.width / 0.72;
     if (viewHeight * aspect < minimumWidth) viewHeight = minimumWidth / aspect;
     const viewWidth = viewHeight * aspect;
+    const bufferHeight = viewHeight * OVERSCAN;
     camera.aspect = aspect;
-    camera.position.set(0, 0, viewHeight / 2 / Math.tan((FOV * Math.PI) / 360));
+    camera.position.set(0, 0, bufferHeight / 2 / Math.tan((FOV * Math.PI) / 360));
     camera.lookAt(0, 0, 0);
     camera.updateProjectionMatrix();
     camera.updateMatrixWorld();
@@ -903,8 +912,8 @@ export function createLanyard(container, options = {}) {
     foilUniforms.foilFill.value.set(3, -1, 4).normalize().transformDirection(camera.matrixWorldInverse);
     foilUniforms.foilTop.value.set(0.5, 4.5, 8).normalize().transformDirection(camera.matrixWorldInverse);
     const anchorX = ((ANCHORS[s.anchor] ?? 0.5) - 0.5) * viewWidth;
-    const anchorY = viewHeight / 2 + 0.2;
-    const cardTop = viewHeight / 2 - viewHeight * mix(0.12, 0.42, clamp(s.strapLength, 0, 1));
+    const anchorY = bufferHeight / 2 + 0.2;
+    const cardTop = bufferHeight / 2 - viewHeight * mix(0.12, 0.42, clamp(s.strapLength, 0, 1));
     const hangTop = cardTop + (layout.hangY - layout.height / 2);
     sim.anchor.set(anchorX, anchorY, 0);
     configureSimulation(sim, layout, anchorY - hangTop);
@@ -1225,7 +1234,11 @@ export function createLanyard(container, options = {}) {
     view.width = Math.max(1, container.clientWidth);
     view.height = Math.max(1, container.clientHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-    renderer.setSize(view.width, view.height, false);
+    /* Overscanned buffer/CSS size (same aspect, so framing is unchanged);
+       the canvas is anchored to the container's top edge in CSS. */
+    renderer.setSize(view.width * OVERSCAN, view.height * OVERSCAN, false);
+    canvas.style.width = `${OVERSCAN * 100}%`;
+    canvas.style.height = `${OVERSCAN * 100}%`;
     apply();
     render();
   };
