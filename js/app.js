@@ -168,7 +168,7 @@
 
     return h("dl", { class: "cv" },
       cvRow("Education", education),
-      cvRow("Practice teaching", practice),
+      cvRow("Field Study", practice),
       cvRow("Skills", cv.skills.join(", ")),
       cvRow("References", references)
     );

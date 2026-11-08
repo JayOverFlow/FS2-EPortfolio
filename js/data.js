@@ -3,7 +3,7 @@ window.PORTFOLIO = {
     name: "John Rex B. Duran",
     role: "Pre-service teacher",
     program: "BTVTED, Major in Computer Programming",
-    institution: "Technological University of the Philippines, Taguig",
+    institution: "Technological University of the Philippines - Taguig",
     school: "President Diosdado Macapagal High School",
     division: "Schools Division of Taguig City and Pateros",
     placement: "Grade 7 TLE (ICT), Sections James, Genesis, Isaiah",
@@ -43,9 +43,7 @@ window.PORTFOLIO = {
       note: "Context and purpose.",
       type: "prose",
       intro: [
-        "I am a pre-service teacher in the BTVTED program at the Technological University of the Philippines, Taguig, majoring in Computer Programming. For the first trimester of S.Y. 2026–2027 I taught Grade 7 TLE and Grade 12 TechPro at President Diosdado Macapagal High School, handling the TLE: FCS subject across Sections Jeremiah, King, and Leviticus.",
-        "Each document is filed under the checklist section it answers, and most carry the practicum indicator (TS) they satisfy. A panelist can start from TS6 and land on the lesson plans and materials, or start from the table of contents and read the term in order.",
-        "Documents open in a panel on this page. Nothing downloads until you ask it to."
+        "I am a pre-service teacher in the BTVTED program at the Technological University of the Philippines - Taguig, majoring in Computer Programming. For the first trimester of S.Y. 2026–2027 I taught Grade 7 TLE and Grade 12 TechPro at President Diosdado Macapagal High School, handling the TLE: FCS subject across Sections Jeremiah, King, and Leviticus.",
       ],
       meta: [
         ["Program", "BTVTED, Major in Computer Programming"],
@@ -53,7 +51,7 @@ window.PORTFOLIO = {
         ["Partner school", "President Diosdado Macapagal High School"],
         ["Period", "First trimester, S.Y. 2026–2027"],
         ["Cooperating teacher", "Ferdinand S. Baltazar"],
-        ["Institution", "Technological University of the Philippines, Taguig"]
+        ["Institution", "Technological University of the Philippines - Taguig"]
       ]
     },
     {
@@ -67,7 +65,7 @@ window.PORTFOLIO = {
       cv: {
         education: {
           title: "BTVTED, Major in Computer Programming",
-          lines: ["Technological University of the Philippines, Taguig", "In progress"]
+          lines: ["Technological University of the Philippines - Taguig", "In progress"]
         },
         practice: {
           title: "field study, Grade 7 TLE (ICT)",
