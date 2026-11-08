@@ -101,9 +101,9 @@ window.PORTFOLIO = {
         "President Diosdado Macapagal High School is a public secondary school in Taguig City, under the Schools Division of Taguig City and Pateros. I completed my field study there in the first trimester of S.Y. 2026–2027."
       ],
       figure: {
-        src: "assets/school-building.svg",
+        src: "assets/pdmhs-bldg.png",
         alt: "Placeholder illustration of the President Diosdado Macapagal High School campus",
-        caption: "Campus photograph pending. President Diosdado Macapagal High School."
+        caption: "President Diosdado Macapagal High School."
       },
       docs: [
         {
