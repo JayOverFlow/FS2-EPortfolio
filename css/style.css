@@ -193,8 +193,8 @@ img {
 
 .hero-inner {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(220px, 300px);
-  align-items: end;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 440px);
+  align-items: center;
   gap: clamp(28px, 5vw, 64px);
   max-width: var(--max);
   margin: 0 auto;
@@ -1186,7 +1186,7 @@ img {
 
 @media (max-width: 1040px) {
   .hero-inner {
-    grid-template-columns: minmax(0, 1fr) minmax(200px, 250px);
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 360px);
   }
 
   .section-grid {
