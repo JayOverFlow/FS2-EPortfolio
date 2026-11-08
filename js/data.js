@@ -43,13 +43,13 @@ window.PORTFOLIO = {
       note: "Context and purpose.",
       type: "prose",
       intro: [
-        "I am a pre-service teacher in the BTVTED program at the Technological University of the Philippines, Taguig, majoring in Computer Programming. For the first trimester of S.Y. 2026–2027 I taught Grade 7 TLE at President Diosdado Macapagal High School, handling the ICT strand across Sections James, Genesis, and Isaiah.",
+        "I am a pre-service teacher in the BTVTED program at the Technological University of the Philippines, Taguig, majoring in Computer Programming. For the first trimester of S.Y. 2026–2027 I taught Grade 7 TLE and Grade 12 TechPro at President Diosdado Macapagal High School, handling the TLE: FCS subject across Sections Jeremiah, King, and Leviticus.",
         "Each document is filed under the checklist section it answers, and most carry the practicum indicator (TS) they satisfy. A panelist can start from TS6 and land on the lesson plans and materials, or start from the table of contents and read the term in order.",
         "Documents open in a panel on this page. Nothing downloads until you ask it to."
       ],
       meta: [
         ["Program", "BTVTED, Major in Computer Programming"],
-        ["Placement", "Grade 7 TLE (ICT), Sections James, Genesis, Isaiah"],
+        ["Placement", "Grade 7 TLE (FCS), Sections Jeremiah, King, Leviticus"],
         ["Partner school", "President Diosdado Macapagal High School"],
         ["Period", "First trimester, S.Y. 2026–2027"],
         ["Cooperating teacher", "Ferdinand S. Baltazar"],
@@ -62,7 +62,7 @@ window.PORTFOLIO = {
       note: "Education, placement, skills.",
       type: "cv",
       intro: [
-        "My background is in computer programming, and my practice teaching put that background in front of Grade 7 learners for a trimester. The summary below is the short version; the PDF is the submitted copy."
+        "My background is in computer programming, and my field study put that background in front of Grade 7 learners for a trimester. The summary below is the short version; the PDF is the submitted copy."
       ],
       cv: {
         education: {
@@ -70,7 +70,7 @@ window.PORTFOLIO = {
           lines: ["Technological University of the Philippines, Taguig", "In progress"]
         },
         practice: {
-          title: "Practice Teaching, Grade 7 TLE (ICT)",
+          title: "field study, Grade 7 TLE (ICT)",
           lines: ["President Diosdado Macapagal High School", "First trimester, S.Y. 2026–2027", "Cooperating Teacher: Ferdinand S. Baltazar"]
         },
         skills: [
@@ -89,7 +89,7 @@ window.PORTFOLIO = {
           slug: "curriculum-vitae",
           tag: "CV",
           title: "Curriculum Vitae",
-          desc: "One page, with education, practice teaching placement, skills, and references.",
+          desc: "One page, with education, field study placement, skills, and references.",
           type: "PDF"
         }
       ]
@@ -100,7 +100,7 @@ window.PORTFOLIO = {
       note: "Partner school profile.",
       type: "docs",
       intro: [
-        "President Diosdado Macapagal High School is a public secondary school in Taguig City, under the Schools Division of Taguig City and Pateros. I completed my practice teaching there in the first trimester of S.Y. 2026–2027."
+        "President Diosdado Macapagal High School is a public secondary school in Taguig City, under the Schools Division of Taguig City and Pateros. I completed my field study there in the first trimester of S.Y. 2026–2027."
       ],
       figure: {
         src: "assets/school-building.svg",
@@ -309,7 +309,7 @@ window.PORTFOLIO = {
           slug: "daily-time-record",
           group: "Filed with this portfolio",
           title: "Daily Time Record",
-          desc: "The DTR for the practice teaching period, signed by the cooperating teacher.",
+          desc: "The DTR for the field study period, signed by the cooperating teacher.",
           type: "PDF"
         }
       ]
