@@ -4,7 +4,7 @@ Portfolio site for John Rex B. Duran, pre-service teacher of Grade 7 TLE (ICT) a
 
 Live URL: `https://jayoverflow.github.io/FS1-EPortfolio/`
 
-Built with HTML, CSS, and vanilla JavaScript. No build step, no dependencies.
+Built with HTML, CSS, and vanilla JavaScript. No build step. The hero's interactive ID card (below) loads [three.js](https://threejs.org/) from a CDN import map — no local install — and falls back to the static portrait if WebGL or the CDN is unavailable.
 
 ## Design
 
@@ -31,9 +31,14 @@ Motion: one page-load sequence on the hero, one drawer transition, hover states.
 .
 ├── index.html          page shell, hero, colophon, footer, viewer
 ├── css/style.css       all styles, including print
+├── css/lanyard.css     hero Lanyard stage + component CSS
 ├── js/data.js          every section, document, and CV entry
 ├── js/app.js           rendering, viewer, scroll spy, file detection
-├── assets/             portrait, campus, seal, favicon placeholders
+├── js/lanyard.js       <Lanyard /> ported from React to vanilla JS (three.js)
+├── js/lanyard-init.js  hero mount + Lanyard options (TUP lanyard)
+├── tools/              generate-lanyard-art.py — rebuilds the card/strap PNGs
+├── assets/             portrait, campus, seal, favicon placeholders,
+│                       card-front/back.png + strap.png (generated, see tools/)
 ├── documents/          drop final PDFs here
 ├── .nojekyll           keeps GitHub Pages from running Jekyll
 └── README.md
@@ -108,7 +113,7 @@ Use **Save as PDF**, A4, default margins.
 
 ## Before final submission
 
-- [ ] Replace `assets/portrait.svg` with a real portrait.
+- [ ] Put a real portrait photo in `assets/photo.jpg` and run `python3 tools/generate-lanyard-art.py --photo assets/photo.jpg` to bake it into the ID card (the hero lanyard replaces `assets/portrait.svg`, which stays as the no-WebGL fallback).
 - [ ] Replace `assets/school-building.svg` and `assets/school-logo.svg` with school photos and the official seal.
 - [ ] Upload the twenty documents listed in `documents/README.md`.
 - [ ] Replace the sample copy in `js/data.js` with the final narrative.

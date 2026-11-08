@@ -168,7 +168,7 @@
 
     return h("dl", { class: "cv" },
       cvRow("Education", education),
-      cvRow("Practice teaching", practice),
+      cvRow("Field Study", practice),
       cvRow("Skills", cv.skills.join(", ")),
       cvRow("References", references)
     );
@@ -241,6 +241,26 @@
         h("img", { src: section.figure.src, alt: section.figure.alt, width: "1200", height: "800", loading: "lazy" }),
         h("figcaption", null, section.figure.caption)
       ));
+    }
+
+    if (section.vision) {
+      body.push(h("div", { class: "learning-block" },
+        h("h3", { class: "learning-label" }, "Vision"),
+        h("p", { class: "learning-text" }, section.vision)
+      ));
+    }
+    if (section.mission) {
+      body.push(h("div", { class: "learning-block" },
+        h("h3", { class: "learning-label" }, "Mission"),
+        h("p", { class: "learning-text" }, section.mission)
+      ));
+    }
+    if (section.history) {
+      const hist = h("div", { class: "learning-block" },
+        h("h3", { class: "learning-label" }, "Short History")
+      );
+      section.history.forEach(function (p) { hist.append(h("p", { class: "learning-text" }, p)); });
+      body.push(hist);
     }
 
     if (section.type === "toc") body.push(renderToc(section));

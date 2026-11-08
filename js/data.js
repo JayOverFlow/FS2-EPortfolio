@@ -3,7 +3,7 @@ window.PORTFOLIO = {
     name: "John Rex B. Duran",
     role: "Pre-service teacher",
     program: "BTVTED, Major in Computer Programming",
-    institution: "Technological University of the Philippines, Taguig",
+    institution: "Technological University of the Philippines - Taguig",
     school: "President Diosdado Macapagal High School",
     division: "Schools Division of Taguig City and Pateros",
     placement: "Grade 7 TLE (ICT), Sections James, Genesis, Isaiah",
@@ -34,7 +34,7 @@ window.PORTFOLIO = {
     {
       roman: "I",
       title: "Table of Contents",
-      note: "Ten sections. Twenty-one documents.",
+      note: "Ten sections. Nineteen documents.",
       type: "toc"
     },
     {
@@ -43,9 +43,7 @@ window.PORTFOLIO = {
       note: "Context and purpose.",
       type: "prose",
       intro: [
-        "I am a pre-service teacher in the BTVTED program at the Technological University of the Philippines, Taguig, majoring in Computer Programming. For the first trimester of S.Y. 2026–2027 I taught Grade 7 TLE and Grade 12 TechPro at President Diosdado Macapagal High School, handling the TLE: FCS subject across Sections Jeremiah, King, and Leviticus.",
-        "Each document is filed under the checklist section it answers, and most carry the practicum indicator (TS) they satisfy. A panelist can start from TS6 and land on the lesson plans and materials, or start from the table of contents and read the term in order.",
-        "Documents open in a panel on this page. Nothing downloads until you ask it to."
+        "I am a pre-service teacher in the BTVTED program at the Technological University of the Philippines - Taguig, majoring in Computer Programming. For the first trimester of S.Y. 2026–2027 I taught Grade 7 TLE and Grade 12 TechPro at President Diosdado Macapagal High School, handling the TLE: FCS subject across Sections Jeremiah, King, and Leviticus.",
       ],
       meta: [
         ["Program", "BTVTED, Major in Computer Programming"],
@@ -53,7 +51,7 @@ window.PORTFOLIO = {
         ["Partner school", "President Diosdado Macapagal High School"],
         ["Period", "First trimester, S.Y. 2026–2027"],
         ["Cooperating teacher", "Ferdinand S. Baltazar"],
-        ["Institution", "Technological University of the Philippines, Taguig"]
+        ["Institution", "Technological University of the Philippines - Taguig"]
       ]
     },
     {
@@ -67,7 +65,7 @@ window.PORTFOLIO = {
       cv: {
         education: {
           title: "BTVTED, Major in Computer Programming",
-          lines: ["Technological University of the Philippines, Taguig", "In progress"]
+          lines: ["Technological University of the Philippines - Taguig", "In progress"]
         },
         practice: {
           title: "field study, Grade 7 TLE (ICT)",
@@ -102,29 +100,29 @@ window.PORTFOLIO = {
       intro: [
         "President Diosdado Macapagal High School is a public secondary school in Taguig City, under the Schools Division of Taguig City and Pateros. I completed my field study there in the first trimester of S.Y. 2026–2027."
       ],
+      vision: "We dream of Filipinos who passionately love their country and whose values and competencies enable them to realize their full potential and contribute meaningfully to building the nation.",
+      mission: "To protect and promote the right of every Filipino to quality, equitable, culture-based, and complete basic education where: Students learn in a child-friendly, gender-sensitive, safe, and motivating environment. Administrators and staff, as stewards of the institution, ensure an enabling and supportive environment for effective learning to happen. Family, community, and other stakeholders are actively engaged and share responsibility for developing life-long learners.",
+      history: [
+        "President Diosdado Macapagal High School (PDMHS) was conceived in 1999, when residents of Barangay Katuparan requested a school for their community. The request was granted, and the Bases Conversion and Development Authority donated the land; groundbreaking took place on August 15, 2005.",
+        "The first buildings were donated by Senator Alan Peter S. Cayetano, who filed the bill establishing the school, and by the local government under Mayor Freddie Tinga. The school opened for operation on August 15, 2007 and was inaugurated on September 1, 2007 as an annex of Signal Village National High School.",
+        "The first commencement exercises were held in April 2011. Since then the school has grown to roughly 3,200 students, with expanded facilities that include a senior high school building added in 2016. Today PDMHS operates as an autonomous annex of Signal Village National High School under the Schools Division of Taguig City and Pateros."
+      ],
       figure: {
-        src: "assets/school-building.svg",
-        alt: "Placeholder illustration of the President Diosdado Macapagal High School campus",
-        caption: "Campus photograph pending. President Diosdado Macapagal High School."
+        src: "assets/pdmhs-bldg.png",
+        alt: "Photograph of the President Diosdado Macapagal High School campus",
+        caption: "President Diosdado Macapagal High School."
       },
       docs: [
-        {
-          slug: "school-vision-mission",
-          title: "Vision and Mission",
-          desc: "The school's vision and mission statements, as posted and used in orientation.",
-          type: "Document"
-        },
-        {
-          slug: "school-history",
-          title: "Short History",
-          desc: "A brief account of the school's founding and growth.",
-          type: "Document"
-        },
         {
           slug: "school-grounds",
           title: "School Grounds and Building",
           desc: "Photographs of the campus, the classrooms, and the TLE workspaces I used.",
-          type: "Image set"
+          type: "Image set",
+          files: [
+            "documents/school-grounds/campus-01.jpg",
+            "documents/school-grounds/campus-02.jpg",
+            "documents/school-grounds/campus-03.jpg"
+          ]
         }
       ]
     },

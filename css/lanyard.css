@@ -1,0 +1,110 @@
+/* ============================================================
+   Lanyard (React Bits, vanilla port) — component CSS
+   ============================================================ */
+
+.lanyard {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /* Visible so the card can swing/overflow the stage while dragging. */
+  overflow: visible;
+}
+
+.lanyard-canvas {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  /* Size is set by js/lanyard.js (overscan > 100%) so the WebGL
+     viewport extends past the container and the card can overflow it. */
+}
+
+/* ------------------------------------------------------------ hero integration */
+
+.hero-lanyard {
+  /* The stage replaces the old portrait frame: transparent canvas,
+     no border box — the card + strap are the portrait. */
+  padding: 0;
+  border: 0;
+  background: transparent;
+  align-self: center;
+  width: 100%;
+  position: relative;
+  z-index: 3;
+  overflow: visible;
+}
+
+.lanyard-mount {
+  width: 100%;
+  height: clamp(480px, 58vw, 640px);
+  min-height: 480px;
+}
+
+.hero-lanyard .lanyard-hint {
+  display: inline-block;
+  margin-right: 8px;
+  padding: 2px 7px;
+  border: 1px solid var(--rule);
+  color: var(--blue);
+}
+
+/* Static portrait stays in the DOM until WebGL is confirmed,
+   then .is-lanyard-active swaps it out (no-JS / no-WebGL fallback). */
+.hero-portrait-fallback {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--ink);
+  padding: 8px;
+  background: var(--paper);
+}
+
+.hero-lanyard.is-lanyard-active .hero-portrait-fallback {
+  display: none;
+}
+
+.hero-lanyard:not(.is-lanyard-active) .lanyard-mount {
+  display: none;
+}
+
+@media (max-width: 1040px) {
+  .lanyard-mount {
+    height: clamp(440px, 52vw, 560px);
+    min-height: 440px;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-lanyard {
+    max-width: 420px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .lanyard-mount {
+    height: 560px;
+    min-height: 520px;
+  }
+}
+
+@media (max-width: 620px) {
+  .lanyard-mount {
+    height: 500px;
+    min-height: 480px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lanyard-mount {
+    height: 480px;
+    min-height: 440px;
+  }
+}
+
+@media print {
+  .hero-lanyard,
+  .lanyard-mount {
+    display: none !important;
+  }
+}
