@@ -1,13 +1,11 @@
-/* Hero Lanyard mount — vanilla replacement for the portrait.
-   If three/WebGL fails to load, the static portrait fallback stays. */
+/* Hero Lanyard mount — the ID card is the hero portrait. */
 import { createLanyard } from './lanyard.js';
 
-const figure = document.querySelector('.hero-lanyard');
 const mount = document.getElementById('lanyardMount');
 
-if (figure && mount) {
+if (mount) {
   try {
-    const lanyard = createLanyard(mount, {
+    createLanyard(mount, {
       frontImage: 'assets/card-front-real.jpg',
       backImage: 'assets/card-back.png',
       /* 'contain' keeps every element of the real ID visible (no cropping). */
@@ -32,9 +30,7 @@ if (figure && mount) {
       interactive: true,
       intro: true
     });
-    if (lanyard && lanyard.canvas) figure.classList.add('is-lanyard-active');
   } catch (err) {
-    /* Keep .hero-portrait-fallback visible; nothing else to do. */
-    if (window.console && console.warn) console.warn('[lanyard] fallback portrait shown:', err);
+    if (window.console && console.warn) console.warn('[lanyard] WebGL unavailable:', err);
   }
 }

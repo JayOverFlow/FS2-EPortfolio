@@ -49,24 +49,7 @@
   color: var(--blue);
 }
 
-/* Static portrait stays in the DOM until WebGL is confirmed,
-   then .is-lanyard-active swaps it out (no-JS / no-WebGL fallback). */
-.hero-portrait-fallback {
-  display: block;
-  width: 100%;
-  height: auto;
-  border: 1px solid var(--ink);
-  padding: 8px;
-  background: var(--paper);
-}
-
-.hero-lanyard.is-lanyard-active .hero-portrait-fallback {
-  display: none;
-}
-
-.hero-lanyard:not(.is-lanyard-active) .lanyard-mount {
-  display: none;
-}
+/* No static portrait: the Lanyard stage is the hero visual. */
 
 @media (max-width: 1040px) {
   .lanyard-mount {
