@@ -132,7 +132,7 @@ window.PORTFOLIO = {
       note: "The teaching load, documented.",
       type: "docs",
       intro: [
-        "The planning documents follow the order of the teaching cycle: the annotated DLL, competencies, management, daily logs, lesson plans, materials, and assessment. The demonstration lesson converts between binary and decimal number systems, with the place-value cards and worksheets used in class."
+        "The planning documents follow the order of the teaching cycle: the annotated DLL, competencies, management, daily logs, lesson plans, materials, and assessment."
       ],
       docs: [
         {
