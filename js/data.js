@@ -301,17 +301,16 @@ window.PORTFOLIO = {
       note: "Records and attachments.",
       type: "docs",
       intro: [
-        "Records and attachments. The cooperating teacher's evaluation goes to the panel in a sealed envelope and is not published here. The daily time record is filed below."
+        "Records and attachments. The cooperating teacher's evaluation and the daily time record for the field study period are filed below."
       ],
       docs: [
         {
           slug: "ct-evaluation",
           ts: "TS13",
-          group: "Submitted separately",
+          group: "Filed with this portfolio",
           title: "Evaluation from CT",
-          desc: "Submitted separately to the panel in a sealed envelope.",
-          type: "Sealed",
-          separate: true
+          desc: "The cooperating teacher's completed evaluation form, with ratings and written comments.",
+          type: "PDF"
         },
         {
           slug: "daily-time-record",
