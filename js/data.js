@@ -234,7 +234,13 @@ window.PORTFOLIO = {
           ts: "TS12",
           title: "DLP and Documentation",
           desc: "The demonstration lesson plan, plus photographs and the recording log.",
-          type: "Image set"
+          type: "Image set",
+          files: [
+            "documents/microteaching-dlp.pdf",
+            "documents/microteaching-dlp/01.png",
+            "documents/microteaching-dlp/02.png",
+            "documents/microteaching-dlp/03.png"
+          ]
         }
       ]
     },
