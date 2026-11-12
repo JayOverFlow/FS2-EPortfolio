@@ -258,7 +258,11 @@ window.PORTFOLIO = {
           ts: "TS1",
           title: "Action Research Data Bank",
           desc: "Instruments, raw responses, and the consolidated data sheet.",
-          type: "PDF"
+          type: "PDF",
+          files: [
+            "documents/action-research-data-bank.pdf",
+            "documents/action-research-data-bank-revised.pdf"
+          ]
         },
         {
           slug: "cbar-manuscript",
