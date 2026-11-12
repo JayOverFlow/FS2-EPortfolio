@@ -1097,6 +1097,14 @@ img {
   gap: 12px;
 }
 
+.viewer-pdf-inline iframe {
+  display: block;
+  width: 100%;
+  height: 68vh;
+  border: 1px solid var(--rule);
+  background: #fff;
+}
+
 .viewer-figure {
   margin: 0;
   padding: 6px;

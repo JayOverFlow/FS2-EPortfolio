@@ -340,6 +340,11 @@
           h("img", { src: file, alt: doc.title, loading: "lazy" }),
           h("figcaption", null, h("a", { href: file, target: "_blank", rel: "noopener" }, file.split("/").pop()))
         ));
+      } else if (/\.pdf$/i.test(file)) {
+        grid.append(h("div", { class: "viewer-pdf-inline" },
+          h("iframe", { src: file, title: doc.title, loading: "lazy" }),
+          h("p", { class: "viewer-download" }, h("a", { href: file, target: "_blank", rel: "noopener" }, "[Open PDF in a new tab]"))
+        ));
       } else {
         grid.append(h("p", { class: "viewer-download" }, h("a", { href: file, target: "_blank", rel: "noopener" }, file.split("/").pop())));
       }
