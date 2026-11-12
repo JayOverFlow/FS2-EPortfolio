@@ -284,7 +284,7 @@ window.PORTFOLIO = {
       title: "Teaching Philosophy",
       note: "What I believe teaching is for.",
       type: "philosophy",
-      quote: "I want learners to leave my class able to build something that works and explain why it works. A learner who can debug a conversion error has learned more than one who can recite the steps.",
+      quote: "As a future educator, I want to become a teacher who believes in every student's capacity to learn and grow.",
       docs: [
         {
           slug: "teaching-philosophy",
