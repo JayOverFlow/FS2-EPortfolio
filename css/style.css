@@ -127,6 +127,30 @@ img {
   color: var(--blue);
 }
 
+.topbar-fieldstudy {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.topbar-fieldstudy:hover {
+  color: var(--blue);
+}
+
+.topbar-fieldstudy .topbar-logo {
+  width: 40px;
+  height: 40px;
+  background: var(--paper);
+}
+
 .topbar-current {
   flex: 1;
   text-align: center;
