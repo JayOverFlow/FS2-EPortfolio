@@ -220,6 +220,8 @@ img {
 }
 
 .hero-inner {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(320px, 440px);
   align-items: center;
@@ -317,6 +319,8 @@ img {
 /* ------------------------------------------------------------ TS strip */
 
 .ts {
+  position: relative;
+  z-index: 1;
   max-width: var(--max);
   margin: clamp(32px, 4.5vw, 52px) auto 0;
 }
