@@ -68,7 +68,7 @@ window.PORTFOLIO = {
           lines: ["Technological University of the Philippines - Taguig", "In progress"]
         },
         practice: {
-          title: "field study, Grade 7 TLE (ICT)",
+          title: "Field Study, Grade 7 TLE (ICT)",
           lines: ["President Diosdado Macapagal High School", "First trimester, S.Y. 2026–2027", "Cooperating Teacher: Ferdinand S. Baltazar"]
         },
         skills: [
@@ -76,7 +76,6 @@ window.PORTFOLIO = {
           "ICT integration in TLE",
           "Lesson and assessment design",
           "Classroom management",
-          "Technical writing"
         ],
         references: [
           { name: "Ferdinand S. Baltazar", role: "Cooperating Teacher, President Diosdado Macapagal High School" }
@@ -88,7 +87,8 @@ window.PORTFOLIO = {
           tag: "CV",
           title: "Curriculum Vitae",
           desc: "One page, with education, field study placement, skills, and references.",
-          type: "PDF"
+          type: "Image",
+          files: ["documents/curriculum-vitae.png"]
         }
       ]
     },
