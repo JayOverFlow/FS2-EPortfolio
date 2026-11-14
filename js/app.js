@@ -231,9 +231,34 @@
 
     if (section.intro) {
       const introClass = section.roman === "II" ? "section-intro intro-drop" : "section-intro";
-      const intro = h("div", { class: introClass });
-      section.intro.forEach(function (p) { intro.append(h("p", null, p)); });
-      body.push(intro);
+      if (section.introImage) {
+        const introWrap = h("div", { class: "section-intro-wrap" });
+        const leftCol = h("div", { class: "section-intro-col" });
+        const intro = h("div", { class: introClass });
+        section.intro.forEach(function (p) { intro.append(h("p", null, p)); });
+        leftCol.append(intro);
+        if (section.meta) {
+          const facts = h("dl", { class: "facts" });
+          section.meta.forEach(function (pair) {
+            facts.append(h("div", { class: "fact" },
+              h("dt", null, pair[0]),
+              h("dd", null, pair[1])
+            ));
+          });
+          leftCol.append(facts);
+        }
+        introWrap.append(leftCol);
+        introWrap.append(h("figure", { class: "section-intro-image" },
+          h("img", { src: section.introImage, alt: "Pre-service teacher portrait", loading: "lazy" })
+        ));
+        body.push(introWrap);
+        // skip the standalone facts render below since they're in the left column
+        section._metaRendered = true;
+      } else {
+        const intro = h("div", { class: introClass });
+        section.intro.forEach(function (p) { intro.append(h("p", null, p)); });
+        body.push(intro);
+      }
     }
 
     if (section.figure) {
@@ -268,7 +293,7 @@
     if (section.quote) body.push(h("blockquote", { class: "statement" }, section.quote));
     if (section.docs) body.push(renderDocs(section.docs));
 
-    if (section.meta) {
+    if (section.meta && !section._metaRendered) {
       const facts = h("dl", { class: "facts" });
       section.meta.forEach(function (pair) {
         facts.append(h("div", { class: "fact" },
@@ -278,6 +303,7 @@
       });
       body.push(facts);
     }
+    delete section._metaRendered;
 
     return h("section", { class: "section", id: section.id, "aria-labelledby": section.id + "-title" },
       h("div", { class: "section-grid" },
