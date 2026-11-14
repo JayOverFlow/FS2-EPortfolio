@@ -46,6 +46,7 @@ window.PORTFOLIO = {
         "I am a pre-service teacher in the BTVTED program at the Technological University of the Philippines - Taguig, majoring in Computer Programming. For the first trimester of S.Y. 2026–2027 I taught Grade 7 TLE and Grade 12 TechPro at President Diosdado Macapagal High School, handling the TLE: FCS subject across Sections Jeremiah, King, and Leviticus.",
       ],
       introImage: "assets/pre-service.png",
+      introImageHover: "assets/uniformed.png",
       meta: [
         ["Program", "BTVTED, Major in Computer Programming"],
         ["Placement", "Grade 7 TLE (FCS), Sections Jeremiah, King, Leviticus"],
