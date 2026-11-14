@@ -305,7 +305,7 @@
     });
     const status = $("[data-toc-status]");
     if (status) {
-      status.textContent = total + " documents, " + separate + " separate submission, " + pending + " pending upload";
+      status.textContent = total + " documents" ;
     }
   }
 
