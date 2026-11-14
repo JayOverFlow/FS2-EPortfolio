@@ -177,7 +177,7 @@
   /* ---------------------------------------------------------------- docs */
 
   function statusMarkup(doc) {
-    return h("span", { class: "doc-status" }, h("span", { class: "dot", "aria-hidden": "true" }), STATUS_LABEL[statusOf(doc)]);
+    return null;
   }
 
   function renderDocs(docs) {
@@ -375,7 +375,7 @@
   let currentDocSlug = null;
 
   function renderViewer(doc) {
-    viewerKicker.textContent = [doc.ts, doc.type, STATUS_LABEL[statusOf(doc)]].filter(Boolean).join(" / ");
+    viewerKicker.textContent = [doc.ts, doc.type].filter(Boolean).join(" / ");
     viewerTitle.textContent = doc.title;
     viewerBody.innerHTML = "";
     viewerBody.append(h("p", { class: "viewer-desc" }, doc.desc));
@@ -493,8 +493,7 @@
     row.className = "doc status-" + statusOf(doc);
     const status = row.querySelector(".doc-status");
     if (status) {
-      status.innerHTML = "";
-      status.append(h("span", { class: "dot", "aria-hidden": "true" }), STATUS_LABEL[statusOf(doc)]);
+      status.remove();
     }
   }
 
