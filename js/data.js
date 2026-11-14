@@ -116,12 +116,12 @@ window.PORTFOLIO = {
         {
           slug: "school-grounds",
           title: "School Grounds and Building",
-          desc: "Photographs of the campus, the classrooms, and the TLE workspaces I used.",
+          desc: "Photographs of the campus and the building.",
           type: "Image set",
           files: [
-            "documents/school-grounds/campus-01.jpg",
-            "documents/school-grounds/campus-02.jpg",
-            "documents/school-grounds/campus-03.jpg"
+            "documents/school-grounds/campus-01.png",
+            "documents/school-grounds/campus-02.png",
+            "documents/school-grounds/campus-03.png"
           ]
         }
       ]
