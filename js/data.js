@@ -45,6 +45,7 @@ window.PORTFOLIO = {
       intro: [
         "I am a pre-service teacher in the BTVTED program at the Technological University of the Philippines - Taguig, majoring in Computer Programming. For the first trimester of S.Y. 2026–2027 I taught Grade 7 TLE and Grade 12 TechPro at President Diosdado Macapagal High School, handling the TLE: FCS subject across Sections Jeremiah, King, and Leviticus.",
       ],
+      introImage: "assets/pre-service.png",
       meta: [
         ["Program", "BTVTED, Major in Computer Programming"],
         ["Placement", "Grade 7 TLE (FCS), Sections Jeremiah, King, Leviticus"],
@@ -60,7 +61,7 @@ window.PORTFOLIO = {
       note: "Education, placement, skills.",
       type: "cv",
       intro: [
-        "My background is in computer programming, and my field study put that background in front of Grade 7 learners for a trimester. The summary below is the short version; the PDF is the submitted copy."
+        "My background is in computer programming, and my field study put that background in front of Grade 7 learners for a trimester."
       ],
       cv: {
         education: {
@@ -100,8 +101,8 @@ window.PORTFOLIO = {
       intro: [
         "President Diosdado Macapagal High School is a public secondary school in Taguig City, under the Schools Division of Taguig City and Pateros. I completed my field study there in the first trimester of S.Y. 2026–2027."
       ],
-      vision: "We dream of Filipinos who passionately love their country and whose values and competencies enable them to realize their full potential and contribute meaningfully to building the nation.",
-      mission: "To protect and promote the right of every Filipino to quality, equitable, culture-based, and complete basic education where: Students learn in a child-friendly, gender-sensitive, safe, and motivating environment. Administrators and staff, as stewards of the institution, ensure an enabling and supportive environment for effective learning to happen. Family, community, and other stakeholders are actively engaged and share responsibility for developing life-long learners.",
+      vision: "To produce high school graduates who are God-fearing, morally upright, socially responsible, creative thinker, civic spirited and life skilled- a product of holistic and innovative learning.",
+      mission: "To provide world-class, superior, high quality, responsive secondary education to students transforming them to be very prepared to enter higher education and at the same time, responsible, humane and productive citizens.",
       history: [
         "President Diosdado Macapagal High School (PDMHS) was conceived in 1999, when residents of Barangay Katuparan requested a school for their community. The request was granted, and the Bases Conversion and Development Authority donated the land; groundbreaking took place on August 15, 2005.",
         "The first buildings were donated by Senator Alan Peter S. Cayetano, who filed the bill establishing the school, and by the local government under Mayor Freddie Tinga. The school opened for operation on August 15, 2007 and was inaugurated on September 1, 2007 as an annex of Signal Village National High School.",
@@ -116,12 +117,12 @@ window.PORTFOLIO = {
         {
           slug: "school-grounds",
           title: "School Grounds and Building",
-          desc: "Photographs of the campus, the classrooms, and the TLE workspaces I used.",
+          desc: "Photographs of the campus and the building.",
           type: "Image set",
           files: [
-            "documents/school-grounds/campus-01.jpg",
-            "documents/school-grounds/campus-02.jpg",
-            "documents/school-grounds/campus-03.jpg"
+            "documents/school-grounds/campus-01.png",
+            "documents/school-grounds/campus-02.png",
+            "documents/school-grounds/campus-03.png"
           ]
         }
       ]

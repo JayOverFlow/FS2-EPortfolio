@@ -177,7 +177,7 @@
   /* ---------------------------------------------------------------- docs */
 
   function statusMarkup(doc) {
-    return h("span", { class: "doc-status" }, h("span", { class: "dot", "aria-hidden": "true" }), STATUS_LABEL[statusOf(doc)]);
+    return null;
   }
 
   function renderDocs(docs) {
@@ -208,7 +208,7 @@
           statusMarkup(doc),
           h("span", { class: "doc-type" }, doc.type)
         ),
-        h("span", { class: "doc-open", "aria-hidden": "true" }, "+")
+        h("span", { class: "doc-open", "aria-hidden": "true", html: '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>' })
       );
       list.append(row);
     });
@@ -231,9 +231,34 @@
 
     if (section.intro) {
       const introClass = section.roman === "II" ? "section-intro intro-drop" : "section-intro";
-      const intro = h("div", { class: introClass });
-      section.intro.forEach(function (p) { intro.append(h("p", null, p)); });
-      body.push(intro);
+      if (section.introImage) {
+        const introWrap = h("div", { class: "section-intro-wrap" });
+        const leftCol = h("div", { class: "section-intro-col" });
+        const intro = h("div", { class: introClass });
+        section.intro.forEach(function (p) { intro.append(h("p", null, p)); });
+        leftCol.append(intro);
+        if (section.meta) {
+          const facts = h("dl", { class: "facts" });
+          section.meta.forEach(function (pair) {
+            facts.append(h("div", { class: "fact" },
+              h("dt", null, pair[0]),
+              h("dd", null, pair[1])
+            ));
+          });
+          leftCol.append(facts);
+        }
+        introWrap.append(leftCol);
+        introWrap.append(h("figure", { class: "section-intro-image" },
+          h("img", { src: section.introImage, alt: "Pre-service teacher portrait", loading: "lazy" })
+        ));
+        body.push(introWrap);
+        // skip the standalone facts render below since they're in the left column
+        section._metaRendered = true;
+      } else {
+        const intro = h("div", { class: introClass });
+        section.intro.forEach(function (p) { intro.append(h("p", null, p)); });
+        body.push(intro);
+      }
     }
 
     if (section.figure) {
@@ -268,7 +293,7 @@
     if (section.quote) body.push(h("blockquote", { class: "statement" }, section.quote));
     if (section.docs) body.push(renderDocs(section.docs));
 
-    if (section.meta) {
+    if (section.meta && !section._metaRendered) {
       const facts = h("dl", { class: "facts" });
       section.meta.forEach(function (pair) {
         facts.append(h("div", { class: "fact" },
@@ -278,6 +303,7 @@
       });
       body.push(facts);
     }
+    delete section._metaRendered;
 
     return h("section", { class: "section", id: section.id, "aria-labelledby": section.id + "-title" },
       h("div", { class: "section-grid" },
@@ -305,7 +331,7 @@
     });
     const status = $("[data-toc-status]");
     if (status) {
-      status.textContent = total + " documents, " + separate + " separate submission, " + pending + " pending upload";
+      status.textContent = total + " documents" ;
     }
   }
 
@@ -375,7 +401,7 @@
   let currentDocSlug = null;
 
   function renderViewer(doc) {
-    viewerKicker.textContent = [doc.ts, doc.type, STATUS_LABEL[statusOf(doc)]].filter(Boolean).join(" / ");
+    viewerKicker.textContent = [doc.ts, doc.type].filter(Boolean).join(" / ");
     viewerTitle.textContent = doc.title;
     viewerBody.innerHTML = "";
     viewerBody.append(h("p", { class: "viewer-desc" }, doc.desc));
@@ -493,8 +519,7 @@
     row.className = "doc status-" + statusOf(doc);
     const status = row.querySelector(".doc-status");
     if (status) {
-      status.innerHTML = "";
-      status.append(h("span", { class: "dot", "aria-hidden": "true" }), STATUS_LABEL[statusOf(doc)]);
+      status.remove();
     }
   }
 
