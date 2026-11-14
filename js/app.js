@@ -249,7 +249,14 @@
         }
         introWrap.append(leftCol);
         introWrap.append(h("figure", { class: "section-intro-image" },
-          h("img", { src: section.introImage, alt: "Pre-service teacher portrait", loading: "lazy" })
+          h("img", { src: section.introImage, alt: "Pre-service teacher portrait", loading: "lazy" }),
+          section.introImageHover ? h("img", {
+            class: "intro-image-hover",
+            src: section.introImageHover,
+            alt: "",
+            "aria-hidden": "true",
+            loading: "eager"
+          }) : null
         ));
         body.push(introWrap);
         // skip the standalone facts render below since they're in the left column

@@ -485,16 +485,31 @@ img {
 }
 
 .section-intro-image {
+  position: relative;
   margin: 0;
   padding: 0;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
 }
 
 .section-intro-image img {
   display: block;
   width: 100%;
-  height: auto;
-  max-height: 420px;
-  object-fit: contain;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.section-intro-image .intro-image-hover {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.section-intro-image:hover .intro-image-hover,
+.section-intro-image:focus-within .intro-image-hover {
+  opacity: 1;
 }
 
 .section-intro p {
@@ -1753,6 +1768,7 @@ img {
   .topbar,
   .hero-figure,
   .section-figure,
+  .section-intro-image .intro-image-hover,
   .doc-open,
   .viewer,
   .footer-nav,
