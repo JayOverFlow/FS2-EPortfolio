@@ -6,8 +6,8 @@ const mount = document.getElementById('lanyardMount');
 if (mount) {
   try {
     createLanyard(mount, {
-      frontImage: 'assets/card-front-real.jpg',
-      backImage: 'assets/card-back.png',
+      frontImage: 'assets/card-front.jpg',
+      backImage: 'assets/card-back.jpeg',
       /* 'contain' keeps every element of the real ID visible (no cropping). */
       imageFit: 'contain',
       cardColor: '#eef3fb',
