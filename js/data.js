@@ -226,6 +226,29 @@ window.PORTFOLIO = {
       intro: [
         "I recorded a demonstration lesson and sat for an evaluation. The form and the lesson documentation are filed here."
       ],
+      carousel: {
+        label: "Photo documentation",
+        slides: [
+          {
+            image: "documents/microteaching-dlp/01.png",
+            title: "Documentation 01",
+            caption: "Microteaching demonstration lesson, photograph 1 of 3.",
+            alt: "Photograph from the microteaching demonstration lesson"
+          },
+          {
+            image: "documents/microteaching-dlp/02.png",
+            title: "Documentation 02",
+            caption: "Microteaching demonstration lesson, photograph 2 of 3.",
+            alt: "Photograph from the microteaching demonstration lesson"
+          },
+          {
+            image: "documents/microteaching-dlp/03.png",
+            title: "Documentation 03",
+            caption: "Microteaching demonstration lesson, photograph 3 of 3.",
+            alt: "Photograph from the microteaching demonstration lesson"
+          }
+        ]
+      },
       docs: [
         {
           slug: "microteaching-evaluation",
@@ -239,12 +262,9 @@ window.PORTFOLIO = {
           ts: "TS12",
           title: "DLP and Documentation",
           desc: "The demonstration lesson plan, plus photographs and the recording log.",
-          type: "Image set",
+          type: "PDF",
           files: [
-            "documents/microteaching-dlp.pdf",
-            "documents/microteaching-dlp/01.png",
-            "documents/microteaching-dlp/02.png",
-            "documents/microteaching-dlp/03.png"
+            "documents/microteaching-dlp.pdf"
           ]
         }
       ]
