@@ -325,10 +325,40 @@
       }
     }
 
+    if (section.cards) {
+      body.push(h("h3", { class: "doc-group doc-group--title" }, "School Grounds and Building"));
+      const grid = h("div", { class: "card-grid" });
+      section.cards.forEach(function (src, i) {
+        grid.append(h("figure", { class: "card" },
+          h("img", { src: src, alt: "School grounds " + (i + 1), loading: "lazy" })
+        ));
+      });
+      body.push(grid);
+    }
+
+    if (section.showcase) {
+      const wrap = h("div", { class: "showcase" });
+      section.showcase.forEach(function (src, i) {
+        const img = h("img", { src: src, alt: "Certificate " + (i + 1), loading: "lazy" });
+        if (section.showcaseDoc) {
+          wrap.append(h("button", {
+            class: "showcase-card",
+            type: "button",
+            "aria-haspopup": "dialog",
+            "aria-label": "Open the certificate viewer",
+            onclick: function () { openDoc(section.showcaseDoc); }
+          }, img));
+        } else {
+          wrap.append(h("figure", { class: "showcase-card" }, img));
+        }
+      });
+      body.push(wrap);
+    }
+
     if (section.type === "toc") body.push(renderToc(section));
     if (section.cv) body.push(renderCv(section.cv));
     if (section.quote) body.push(h("blockquote", { class: "statement" }, section.quote));
-    if (section.docs) body.push(renderDocs(section.docs));
+    if (section.docs && section.docs.length) body.push(renderDocs(section.docs));
 
     if (section.meta && !section._metaRendered) {
       const facts = h("dl", { class: "facts" });
@@ -585,6 +615,29 @@
       if (doc) renderViewer(doc);
     }
   }
+
+  /* ---------------------------------------------------------------- carousel */
+  function initCarousels() {
+    document.querySelectorAll('[data-carousel]').forEach(function (root) {
+      const slides = Array.from(root.querySelectorAll('.carousel-slide'));
+      const dots = Array.from(root.querySelectorAll('.carousel-dot'));
+      const prev = root.querySelector('.carousel-prev');
+      const next = root.querySelector('.carousel-next');
+      if (!slides.length) return;
+      let index = 0;
+      const show = function (i) {
+        index = (i + slides.length) % slides.length;
+        slides.forEach(function (s, k) { s.classList.toggle('is-active', k === index); });
+        dots.forEach(function (d, k) { d.classList.toggle('is-active', k === index); });
+      };
+      if (prev) prev.addEventListener('click', function () { show(index - 1); });
+      if (next) next.addEventListener('click', function () { show(index + 1); });
+      dots.forEach(function (d, k) { d.addEventListener('click', function () { show(k); }); });
+      // auto-advance
+      setInterval(function () { show(index + 1); }, 4000);
+    });
+  }
+  initCarousels();
 
   detectFiles();
 })();
