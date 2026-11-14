@@ -1585,6 +1585,25 @@ img {
   margin: 0 0 32px;
 }
 
+/* Card deck carousel (components/ui/card-deck-carousel.js) */
+.card-deck-mount {
+  margin: 0 0 24px;
+}
+
+/* Section VII ends with the carousel; drop its bottom padding and the
+   mount's bottom margin so nothing sits between the cards and the border. */
+#section-vii {
+  padding-bottom: 0;
+}
+
+#section-iv {
+  padding-bottom: 0;
+}
+
+#section-vii .card-deck-mount {
+  margin-bottom: 0;
+}
+
 .doc-group--title {
   color: var(--ink);
   font-size: 1.08rem;

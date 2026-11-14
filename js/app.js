@@ -360,6 +360,13 @@
     if (section.quote) body.push(h("blockquote", { class: "statement" }, section.quote));
     if (section.docs && section.docs.length) body.push(renderDocs(section.docs));
 
+    if (section.carousel && section.carousel.slides) {
+      body.push(h("h3", { class: "doc-group doc-group--title" }, section.carousel.label));
+      const slidesAttr = JSON.stringify(section.carousel.slides);
+      const deck = h("div", { class: "card-deck-mount", "data-card-deck": "", "data-slides": slidesAttr });
+      body.push(deck);
+    }
+
     if (section.meta && !section._metaRendered) {
       const facts = h("dl", { class: "facts" });
       section.meta.forEach(function (pair) {
