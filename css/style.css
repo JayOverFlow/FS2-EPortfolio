@@ -819,11 +819,15 @@ img {
   width: 26px;
   height: 26px;
   border: 1px solid var(--rule);
-  font-family: var(--mono);
-  font-size: 14px;
-  line-height: 1;
-  color: var(--muted);
+  color: #000000;
   transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.doc-open svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
 }
 
 .doc:hover .doc-title {
