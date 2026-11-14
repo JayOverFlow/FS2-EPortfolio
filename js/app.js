@@ -261,31 +261,68 @@
       }
     }
 
-    if (section.figure) {
-      body.push(h("figure", { class: "section-figure" },
-        h("img", { src: section.figure.src, alt: section.figure.alt, width: "1200", height: "800", loading: "lazy" }),
-        h("figcaption", null, section.figure.caption)
-      ));
-    }
+    if (section.roman === "IV") {
+      const twoCol = h("div", { class: "section-iv-grid" });
+      const leftCol = h("div", { class: "section-iv-left" });
+      if (section.intro) {
+        const intro = h("div", { class: "section-intro" });
+        section.intro.forEach(function (p) { intro.append(h("p", null, p)); });
+        leftCol.append(intro);
+      }
+      if (section.vision) {
+        leftCol.append(h("div", { class: "learning-block" },
+          h("h3", { class: "learning-label" }, "Vision"),
+          h("p", { class: "learning-text" }, section.vision)
+        ));
+      }
+      if (section.mission) {
+        leftCol.append(h("div", { class: "learning-block" },
+          h("h3", { class: "learning-label" }, "Mission"),
+          h("p", { class: "learning-text" }, section.mission)
+        ));
+      }
+      if (section.history) {
+        const hist = h("div", { class: "learning-block" },
+          h("h3", { class: "learning-label" }, "Short History")
+        );
+        section.history.forEach(function (p) { hist.append(h("p", { class: "learning-text" }, p)); });
+        leftCol.append(hist);
+      }
+      twoCol.append(leftCol);
+      if (section.figure) {
+        twoCol.append(h("figure", { class: "section-figure section-iv-figure" },
+          h("img", { src: section.figure.src, alt: section.figure.alt, width: "1200", height: "800", loading: "lazy" }),
+          h("figcaption", null, section.figure.caption)
+        ));
+      }
+      body.push(twoCol);
+    } else {
+      if (section.figure) {
+        body.push(h("figure", { class: "section-figure" },
+          h("img", { src: section.figure.src, alt: section.figure.alt, width: "1200", height: "800", loading: "lazy" }),
+          h("figcaption", null, section.figure.caption)
+        ));
+      }
 
-    if (section.vision) {
-      body.push(h("div", { class: "learning-block" },
-        h("h3", { class: "learning-label" }, "Vision"),
-        h("p", { class: "learning-text" }, section.vision)
-      ));
-    }
-    if (section.mission) {
-      body.push(h("div", { class: "learning-block" },
-        h("h3", { class: "learning-label" }, "Mission"),
-        h("p", { class: "learning-text" }, section.mission)
-      ));
-    }
-    if (section.history) {
-      const hist = h("div", { class: "learning-block" },
-        h("h3", { class: "learning-label" }, "Short History")
-      );
-      section.history.forEach(function (p) { hist.append(h("p", { class: "learning-text" }, p)); });
-      body.push(hist);
+      if (section.vision) {
+        body.push(h("div", { class: "learning-block" },
+          h("h3", { class: "learning-label" }, "Vision"),
+          h("p", { class: "learning-text" }, section.vision)
+        ));
+      }
+      if (section.mission) {
+        body.push(h("div", { class: "learning-block" },
+          h("h3", { class: "learning-label" }, "Mission"),
+          h("p", { class: "learning-text" }, section.mission)
+        ));
+      }
+      if (section.history) {
+        const hist = h("div", { class: "learning-block" },
+          h("h3", { class: "learning-label" }, "Short History")
+        );
+        section.history.forEach(function (p) { hist.append(h("p", { class: "learning-text" }, p)); });
+        body.push(hist);
+      }
     }
 
     if (section.type === "toc") body.push(renderToc(section));
