@@ -261,37 +261,104 @@
       }
     }
 
-    if (section.figure) {
-      body.push(h("figure", { class: "section-figure" },
-        h("img", { src: section.figure.src, alt: section.figure.alt, width: "1200", height: "800", loading: "lazy" }),
-        h("figcaption", null, section.figure.caption)
-      ));
+    if (section.roman === "IV") {
+      const twoCol = h("div", { class: "section-iv-grid" });
+      const leftCol = h("div", { class: "section-iv-left" });
+      if (section.intro) {
+        const intro = h("div", { class: "section-intro" });
+        section.intro.forEach(function (p) { intro.append(h("p", null, p)); });
+        leftCol.append(intro);
+      }
+      if (section.vision) {
+        leftCol.append(h("div", { class: "learning-block" },
+          h("h3", { class: "learning-label" }, "Vision"),
+          h("p", { class: "learning-text" }, section.vision)
+        ));
+      }
+      if (section.mission) {
+        leftCol.append(h("div", { class: "learning-block" },
+          h("h3", { class: "learning-label" }, "Mission"),
+          h("p", { class: "learning-text" }, section.mission)
+        ));
+      }
+      if (section.history) {
+        const hist = h("div", { class: "learning-block" },
+          h("h3", { class: "learning-label" }, "Short History")
+        );
+        section.history.forEach(function (p) { hist.append(h("p", { class: "learning-text" }, p)); });
+        leftCol.append(hist);
+      }
+      twoCol.append(leftCol);
+      if (section.figure) {
+        twoCol.append(h("figure", { class: "section-figure section-iv-figure" },
+          h("img", { src: section.figure.src, alt: section.figure.alt, width: "1200", height: "800", loading: "lazy" }),
+          h("figcaption", null, section.figure.caption)
+        ));
+      }
+      body.push(twoCol);
+    } else {
+      if (section.figure) {
+        body.push(h("figure", { class: "section-figure" },
+          h("img", { src: section.figure.src, alt: section.figure.alt, width: "1200", height: "800", loading: "lazy" }),
+          h("figcaption", null, section.figure.caption)
+        ));
+      }
+
+      if (section.vision) {
+        body.push(h("div", { class: "learning-block" },
+          h("h3", { class: "learning-label" }, "Vision"),
+          h("p", { class: "learning-text" }, section.vision)
+        ));
+      }
+      if (section.mission) {
+        body.push(h("div", { class: "learning-block" },
+          h("h3", { class: "learning-label" }, "Mission"),
+          h("p", { class: "learning-text" }, section.mission)
+        ));
+      }
+      if (section.history) {
+        const hist = h("div", { class: "learning-block" },
+          h("h3", { class: "learning-label" }, "Short History")
+        );
+        section.history.forEach(function (p) { hist.append(h("p", { class: "learning-text" }, p)); });
+        body.push(hist);
+      }
     }
 
-    if (section.vision) {
-      body.push(h("div", { class: "learning-block" },
-        h("h3", { class: "learning-label" }, "Vision"),
-        h("p", { class: "learning-text" }, section.vision)
-      ));
+    if (section.cards) {
+      body.push(h("h3", { class: "doc-group doc-group--title" }, "School Grounds and Building"));
+      const grid = h("div", { class: "card-grid" });
+      section.cards.forEach(function (src, i) {
+        grid.append(h("figure", { class: "card" },
+          h("img", { src: src, alt: "School grounds " + (i + 1), loading: "lazy" })
+        ));
+      });
+      body.push(grid);
     }
-    if (section.mission) {
-      body.push(h("div", { class: "learning-block" },
-        h("h3", { class: "learning-label" }, "Mission"),
-        h("p", { class: "learning-text" }, section.mission)
-      ));
-    }
-    if (section.history) {
-      const hist = h("div", { class: "learning-block" },
-        h("h3", { class: "learning-label" }, "Short History")
-      );
-      section.history.forEach(function (p) { hist.append(h("p", { class: "learning-text" }, p)); });
-      body.push(hist);
+
+    if (section.showcase) {
+      const wrap = h("div", { class: "showcase" });
+      section.showcase.forEach(function (src, i) {
+        const img = h("img", { src: src, alt: "Certificate " + (i + 1), loading: "lazy" });
+        if (section.showcaseDoc) {
+          wrap.append(h("button", {
+            class: "showcase-card",
+            type: "button",
+            "aria-haspopup": "dialog",
+            "aria-label": "Open the certificate viewer",
+            onclick: function () { openDoc(section.showcaseDoc); }
+          }, img));
+        } else {
+          wrap.append(h("figure", { class: "showcase-card" }, img));
+        }
+      });
+      body.push(wrap);
     }
 
     if (section.type === "toc") body.push(renderToc(section));
     if (section.cv) body.push(renderCv(section.cv));
     if (section.quote) body.push(h("blockquote", { class: "statement" }, section.quote));
-    if (section.docs) body.push(renderDocs(section.docs));
+    if (section.docs && section.docs.length) body.push(renderDocs(section.docs));
 
     if (section.meta && !section._metaRendered) {
       const facts = h("dl", { class: "facts" });
@@ -548,6 +615,29 @@
       if (doc) renderViewer(doc);
     }
   }
+
+  /* ---------------------------------------------------------------- carousel */
+  function initCarousels() {
+    document.querySelectorAll('[data-carousel]').forEach(function (root) {
+      const slides = Array.from(root.querySelectorAll('.carousel-slide'));
+      const dots = Array.from(root.querySelectorAll('.carousel-dot'));
+      const prev = root.querySelector('.carousel-prev');
+      const next = root.querySelector('.carousel-next');
+      if (!slides.length) return;
+      let index = 0;
+      const show = function (i) {
+        index = (i + slides.length) % slides.length;
+        slides.forEach(function (s, k) { s.classList.toggle('is-active', k === index); });
+        dots.forEach(function (d, k) { d.classList.toggle('is-active', k === index); });
+      };
+      if (prev) prev.addEventListener('click', function () { show(index - 1); });
+      if (next) next.addEventListener('click', function () { show(index + 1); });
+      dots.forEach(function (d, k) { d.addEventListener('click', function () { show(k); }); });
+      // auto-advance
+      setInterval(function () { show(index + 1); }, 4000);
+    });
+  }
+  initCarousels();
 
   detectFiles();
 })();
