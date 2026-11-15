@@ -23,11 +23,9 @@ const CD_CSS = [
   ".cd-card[data-fly='1']{transition:transform .45s cubic-bezier(.3,.5,.3,1),opacity .45s ease}",
   ".cd-card[data-snap='1']{transition:none}",
   ".cd-card img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;display:block;pointer-events:none;user-select:none;-webkit-user-drag:none}",
-  ".cd-meta{display:flex;align-items:center;gap:clamp(16px,3vw,32px);width:min(var(--cd-w),100%);max-width:560px}",
+  ".cd-meta{display:flex;align-items:center;gap:clamp(10px,1.2vw,14px);width:min(var(--cd-w),100%);max-width:560px}",
   ".cd-cap{flex:1;min-width:0;overflow:hidden;padding-bottom:.2em}",
   ".cd-cap>*{display:block;animation:cd-in .6s cubic-bezier(.2,.8,.2,1) both}",
-  ".cd-title{font:500 clamp(18px,2.2vw,24px)/1.15 'Source Serif 4',Georgia,'Times New Roman',serif;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}",
-  ".cd-sub{margin-top:4px;font:400 13px/1.4 'Cousine',ui-monospace,monospace;color:var(--cd-muted);animation-delay:.05s}",
   ".cd-count{font:500 12px/1 'Cousine',ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em;color:var(--cd-muted);white-space:nowrap}",
   ".cd-count b{color:var(--cd-ink);font-weight:400}",
   ".cd-btn{appearance:none;border:1px solid var(--cd-line);background:transparent;color:inherit;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;cursor:pointer;flex:none;transition:background .2s ease,color .2s ease;padding:0}",
@@ -164,7 +162,7 @@ export function createCardDeck(mount, options) {
   nextBtn.setAttribute("aria-label", "Next")
   nextBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m6 3 5 5-5 5" stroke="currentColor" stroke-width="1.4"/></svg>'
 
-  meta.append(prevBtn, cap, count, nextBtn)
+  meta.append(cap, count, prevBtn, nextBtn)
   root.append(meta)
 
   const sr = document.createElement("div")
@@ -210,10 +208,8 @@ export function createCardDeck(mount, options) {
     })
 
     cap.innerHTML = ""
-    if (s.title) cap.append(el("span", "cd-title", s.title))
-    if (s.caption) cap.append(el("span", "cd-sub", s.caption))
     count.innerHTML = "<b>" + pad2(top + 1) + "</b> / " + pad2(n)
-    sr.textContent = "Card " + (top + 1) + " of " + n + (s.title ? ": " + s.title : "")
+    sr.textContent = "Card " + (top + 1) + " of " + n
   }
 
   function el(tag, cls, text) {
