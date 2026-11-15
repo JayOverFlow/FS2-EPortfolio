@@ -28,9 +28,10 @@ const EYELET_RADIUS = 0.036;
 const CLAMP_BODY = 0.15;
 const FACE_WIDTH = 1024;
 /* Canvas overscan: the WebGL viewport is this factor larger than the
-   container (anchored to its top edge) so the card can overflow the
-   stage while being dragged/thrown instead of clipping at its edge. */
-const OVERSCAN = 1.55;
+   container (centered on it) so the card can overflow the stage on every
+   side — including out over the hero text — while being dragged/thrown
+   instead of clipping at the stage edge. */
+const OVERSCAN = 2.4;
 
 const FINISHES = {
   glossy: { roughness: 0.42, metalness: 0, clearcoat: 1, clearcoatRoughness: 0.06, foil: 0, anisotropy: 0 },
@@ -896,13 +897,17 @@ export function createLanyard(container, options = {}) {
     const s = settings;
     const aspect = view.width / view.height;
     /* viewHeight is the container's world height; the overscanned canvas
-       shows viewHeight * OVERSCAN, anchored to the container's top edge,
-       so the resting card keeps its size inside the stage. */
+       shows viewHeight * OVERSCAN, centered on the container, so the
+       resting card keeps its size and position inside the stage. */
     let viewHeight = layout.height / clamp(s.size, 0.15, 0.9);
     const minimumWidth = layout.width / 0.72;
     if (viewHeight * aspect < minimumWidth) viewHeight = minimumWidth / aspect;
     const viewWidth = viewHeight * aspect;
     const bufferHeight = viewHeight * OVERSCAN;
+    /* World-space y of the stage's top edge: the buffer is centered on the
+       stage, so the stage top sits (OVERSCAN - 1) / 2 viewHeights below the
+       buffer's top edge. */
+    const stageTop = bufferHeight / 2 - ((OVERSCAN - 1) / 2) * viewHeight;
     camera.aspect = aspect;
     camera.position.set(0, 0, bufferHeight / 2 / Math.tan((FOV * Math.PI) / 360));
     camera.lookAt(0, 0, 0);
@@ -912,8 +917,8 @@ export function createLanyard(container, options = {}) {
     foilUniforms.foilFill.value.set(3, -1, 4).normalize().transformDirection(camera.matrixWorldInverse);
     foilUniforms.foilTop.value.set(0.5, 4.5, 8).normalize().transformDirection(camera.matrixWorldInverse);
     const anchorX = ((ANCHORS[s.anchor] ?? 0.5) - 0.5) * viewWidth;
-    const anchorY = bufferHeight / 2 + 0.2;
-    const cardTop = bufferHeight / 2 - viewHeight * mix(0.12, 0.42, clamp(s.strapLength, 0, 1));
+    const anchorY = stageTop + 0.2;
+    const cardTop = stageTop - viewHeight * mix(0.12, 0.42, clamp(s.strapLength, 0, 1));
     const hangTop = cardTop + (layout.hangY - layout.height / 2);
     sim.anchor.set(anchorX, anchorY, 0);
     configureSimulation(sim, layout, anchorY - hangTop);

@@ -13,9 +13,11 @@
 .lanyard-canvas {
   display: block;
   position: absolute;
-  top: 0;
+  /* Centered on the stage so the overscanned viewport reaches past it on
+     every side: the card can be dragged over the hero text and stay visible. */
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   /* Size is set by js/lanyard.js (overscan > 100%) so the WebGL
      viewport extends past the container and the card can overflow it. */
 }
@@ -47,6 +49,12 @@
   padding: 2px 7px;
   border: 1px solid var(--rule);
   color: var(--blue);
+}
+
+/* The depth-card tilt wrapper clips its content by default; the lanyard
+   card must be able to escape the stage and swing over the hero text. */
+.hero-lanyard .depth-card__inner {
+  overflow: visible;
 }
 
 /* No static portrait: the Lanyard stage is the hero visual. */

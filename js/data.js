@@ -62,7 +62,7 @@ window.PORTFOLIO = {
       note: "Education, placement, skills.",
       type: "cv",
       intro: [
-        "My background is in computer programming, and my field study put that background in front of Grade 7 learners for a trimester."
+        "In relation to my program, I have a background in computer proramming which I was able utilize in facilitating Grade 7 students for one term."
       ],
       cv: {
         education: {
